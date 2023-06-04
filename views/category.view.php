@@ -6,6 +6,13 @@
 	<title>Document</title>
 </head>
 <body>
-	this is view
+	<h3>artists</h3>
+	<ul>
+		<?php foreach($artists as $artist) { ?>
+			<li>
+				<?= $artist["artist_name"] ?>
+			</li>
+		<?php } ?>
+	</ul>
 </body>
 </html>

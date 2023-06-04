@@ -1,6 +1,8 @@
 <?php
 
-class QueryBulider{
+// namespace core\database;
+
+class QueryBuilder{
 	protected $connection;
 	protected $table;
 	protected $query;
