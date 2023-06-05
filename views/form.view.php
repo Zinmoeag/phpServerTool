@@ -6,6 +6,10 @@
 	<title>Document</title>
 </head>
 <body>
-	<h2>This is Category</h2>
+	<h3>Form</h3>
+	<form action="/form" method="POST">
+		<input type="text" name="name">
+		<button type="submit">Submit</button>
+	</form>
 </body>
 </html>

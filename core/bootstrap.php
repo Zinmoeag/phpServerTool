@@ -10,12 +10,12 @@ $dotenv->load();
 //database setup
 require(__DIR__."/database/connection.php");
 require(__DIR__ . "/database/QueryBuilder.php");
-// dd(require(__DIR__ . "/database/QueryBuilder.php"));
-$database = require(__DIR__."/config/database.php");
+$databaseConnection = require(__DIR__."/config/database.php");
 
-
+require(__DIR__."/route/Router.php");
+require(__DIR__."/Request.php");
 
 //databaseConnection
-$connection = DbConnection::make($database["connection"][env("DB_CONNECTION")]);
+$connection = DbConnection::make($databaseConnection["connection"][env("DB_CONNECTION")]);
 
 
