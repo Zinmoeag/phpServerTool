@@ -8,4 +8,4 @@
 	
 	$Router->get("form","./controllers/FormController.php");
 
-	$Router->post("form","./controllers/FormController.php");
+	$Router->post("formadd","./controllers/FormAddController.php");

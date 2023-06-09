@@ -1,15 +1,10 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-	<meta charset="UTF-8">
-	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<title>Document</title>
-</head>
-<body>
+<?php require "partial/header.view.php"; ?>
+
 	<h3>Form</h3>
-	<form action="/form" method="POST">
-		<input type="text" name="name">
+	<form action="/formadd" method="POST">
+		<input type="text" name="name" placeholder="name">
+		<input type="text" name="slug" placeholder="slug">
 		<button type="submit">Submit</button>
 	</form>
-</body>
-</html>
+
+<?php require "partial/footer.view.php"; ?>

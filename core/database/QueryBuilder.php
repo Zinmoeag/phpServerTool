@@ -1,3 +1,4 @@
+
 <?php
 
 // namespace core\database;
@@ -12,14 +13,14 @@ class QueryBuilder{
 		$this->table = $table;
 	}
 
-	private function runAndGet($query){
-		$query->execute();
-		return $query->fetchAll(PDO::FETCH_ASSOC);
+	private function run($query,$executeVal = null){
+		$query->execute($executeVal);
 	}
 
 	public function all(){
 		$query = $this->connection->prepare("select * from $this->table;");
-		return $this->runAndGet($query);
+		$this->run($query);
+		return $query->fetchAll(PDO::FETCH_ASSOC);
 	}
 
 	public function where($column,$value,$operator="="){
@@ -32,7 +33,27 @@ class QueryBuilder{
 		}
 	}
 
+	public function insert($dataArr){
+		$dataKeyArr = array_keys($dataArr);
+		$tableCol = implode(",",$dataKeyArr);
+		$questionMarks ="";
+
+		foreach ($dataArr as $item) {
+			$questionMarks .= "?,";
+		}
+
+		$questionMarks = rtrim($questionMarks , ",");
+
+		$sql = "insert into $this->table ($tableCol) values ($questionMarks)";
+		$query = $this->connection->prepare($sql);
+
+		//insert value
+		$dataValueArr = array_values($dataArr);
+		$this->run($query,$dataValueArr);
+	}
+
 	public function get(){
-		return $this->runAndGet($this->query);
+		$this->run($this->query);
+		return $this->query->fetchAll(PDO::FETCH_ASSOC);
 	}
 }

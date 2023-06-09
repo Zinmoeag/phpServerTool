@@ -6,11 +6,6 @@ class Router{
 		"POST" => [],
 	];
 
-	// function define($routes)
-	// {
-	// 	$this->routes = $routes;
-	// }
-
 	public static function load($filename)
 	{
 		$Router = new Router;
