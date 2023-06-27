@@ -1,5 +1,7 @@
 <?php
 
+require_once realpath("./vendor/autoload.php");
+
 require("./helper.php");
 require("./core/bootstrap.php");
-require Router::load("routes.php")->direct(Request::uri(),Request::reqMethod());
+Router::load("routes.php")->direct(Request::uri(),Request::reqMethod());

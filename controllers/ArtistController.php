@@ -1,7 +1,14 @@
 <?php
 
-$builder = new QueryBuilder($connection,"artists");
+class ArtistController {
 
-$artists = $builder->all();
+	public function index(){
 
-require(dirname(__DIR__, 1)."/views/artist.view.php");
+		$artists = Artist::where("id",2)->get();
+		// $artists = Artist::all();
+
+		return view("artist",[
+			"artists" => $artists,
+		]);
+	}
+}

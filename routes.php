@@ -1,11 +1,15 @@
 <?php
 
-	$Router->get("","./controllers/IndexController.php");
 
-	$Router->get("artist","./controllers/ArtistController.php");
+	$Router->get("","PagesController@index");
 
-	$Router->get("category","./controllers/CategoryController.php");
-	
-	$Router->get("form","./controllers/FormController.php");
+	$Router->get("artist","ArtistController@index");
 
-	$Router->post("formadd","./controllers/FormAddController.php");
+	$Router->get("category","PagesController@category");
+
+	$Router->get("form","FormController@index");
+
+	$Router->get("blog","BlogController@index");
+
+	$Router->post("formadd","FormController@create");
+

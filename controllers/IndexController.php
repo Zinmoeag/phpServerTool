@@ -1,19 +1,6 @@
 <?php
 
-$builder = new QueryBuilder($connection,"blogs");
-// dd($builder->all());
-// dd($builder->where("body","%"."delect"."%","like")->get());
-// dd($builder->where("id",3)->get());
+$builder = new QueryBuilder(App::get("database"),"blogs");
 
 
-class IndexController
-{
-	function index(){
-		
-		return "./views/index.view.php";
-	}
-}
 
-$page = new IndexController;
-
-require($page->index());

@@ -1,21 +1,11 @@
 <?php
 //env setup
 
-
-require_once realpath(dirname(__DIR__, 1)."/vendor/autoload.php");
 use Dotenv\Dotenv;
-$dotenv = Dotenv::createUnsafeImmutable(dirname(__DIR__, 1));
-$dotenv->load();
 
-//database setup
-require(__DIR__."/database/connection.php");
-require(__DIR__ . "/database/QueryBuilder.php");
-$databaseConnection = require(__DIR__."/config/database.php");
-
-require(__DIR__."/route/Router.php");
-require(__DIR__."/Request.php");
+App::bind("Dotenv", Dotenv::createUnsafeImmutable(dirname(__DIR__, 1)));
+App::get("Dotenv")->load();
 
 //databaseConnection
-$connection = DbConnection::make($databaseConnection["connection"][env("DB_CONNECTION")]);
-
-
+App::bind("config",require(__DIR__."/config/database.php"));
+App::bind("database",DbConnection::make(App::get("config")["connection"][env("DB_CONNECTION")]));

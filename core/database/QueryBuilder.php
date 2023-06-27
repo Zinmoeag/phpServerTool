@@ -19,8 +19,8 @@ class QueryBuilder{
 
 	public function all(){
 		$query = $this->connection->prepare("select * from $this->table;");
-		$this->run($query);
-		return $query->fetchAll(PDO::FETCH_ASSOC);
+		$this->query = $query;
+		return $this;
 	}
 
 	public function where($column,$value,$operator="="){

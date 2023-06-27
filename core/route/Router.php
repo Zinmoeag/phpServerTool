@@ -27,12 +27,19 @@ class Router{
 
 	public function direct($uri,$method)
 	{
-		//check uri exist and return controller
-		if(array_key_exists($uri,$this->routes[$method])){
-			return $this->routes[$method][$uri];
+		// check uri exist and return controller
+		if(!array_key_exists($uri,$this->routes[$method])){
+			die("404");
 		}
 
-		die("404");
-		 
+		$destination = explode("@",$this->routes[$method][$uri]);
+
+		$this->controller($destination[0],$destination[1]);
+	}
+
+	protected function controller($class, $method){
+
+		$controller = new $class;
+		$controller->$method();
 	}
 }
